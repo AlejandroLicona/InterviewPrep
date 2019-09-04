@@ -1,0 +1,21 @@
+public static int singleNumber(int[] A) {
+    HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();
+    int count = 1;
+    for(int i=0; i<A.length; i++){
+        int numberKey = A[i];
+        if(hm.containsKey(numberKey)){
+            // count++;
+            hm.put(numberKey, count+1);
+        } else {
+            hm.put(numberKey, count);
+        }
+    }
+    for(HashMap.Entry<Integer, Integer> entry : hm.entrySet()){
+        Integer key = entry.getKey();
+        Integer value = entry.getValue();
+        if(value == 1){
+            return key;
+        }
+    }
+    return 0;
+}
