@@ -1,0 +1,24 @@
+public static ArrayList<String> combParenthesis(int pairs) {
+    String leftOpen = "(";
+    String leftClose = ")";
+    String right = "()";
+    StringBuilder sbLeft = new StringBuilder();
+    StringBuilder sbRight = new StringBuilder();
+    String completeLeft = "";
+    String completeRight = "";
+    ArrayList<String> result = new ArrayList<String>();
+    for(int i=0; i<pairs; i++){
+        sbLeft.append(leftOpen);
+    }
+    for(int i=0; i<pairs; i++){
+       sbLeft.append(leftClose);
+    }
+    for(int i=0; i<pairs; i++){
+        sbRight.append(right);
+    }
+    completeLeft = sbLeft.toString();
+    completeRight = sbRight.toString();
+    result.add(completeLeft);
+    result.add(completeRight);
+    return result;
+}
