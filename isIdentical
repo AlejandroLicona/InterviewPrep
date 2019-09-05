@@ -1,0 +1,44 @@
+// recursive answer
+public boolean isIdentical(TreeNode root1, TreeNode root2){
+    if(root1==null && root2==null){
+        return true;
+    } 
+    if(root1==null || root2==null){
+        return false;
+    } 
+    return (root1.data==root2.data && isIdentical(root1.left, root2.left) && isIdentical(root1.right && root2.right));
+}
+
+// iterative answer
+public boolean isIdentical(TreeNode root1, TreeNode root2) {
+    Queue<TreeNode> q1 = new LinkedList<TreeNode>();
+    Queue<TreeNode> q2 = new LinkedList<TreeNode>();
+    q1.add(root1);
+    q2.add(root2);
+    while(!q1.isEmpty()){
+        TreeNode rootOne = q1.remove();
+        TreeNode rootTwo = q2.remove();
+        if(rootOne.left != null){
+            q1.add(rootOne.right);
+        } 
+        if(rootOne.right != null){
+            q1.add(rootOne.right);
+        }
+        if(rootTwo.left != null){
+            q2.add(rootTwo.left);
+        }
+        if(rootTwo.right != null){
+            q2.add(rootTwo.right);
+        }
+    }
+    if(q1.size() != q2.size()){
+        return false;
+    } else {
+        for(int i=0; i<=q1.size(); i++){
+            if(q1.remove(i) != q2.remove(i)){
+                return false;
+            }
+        }
+    }
+    return true;
+}
