@@ -1,0 +1,11 @@
+public Boolean isCyclic(ListNode head) {
+    ListNode placeHolder = head;
+    ListNode current = head;
+    while(head != null){
+        current = current.next;
+        if(current == placeHolder){
+            return true;
+        }
+    }
+    return false;
+}
