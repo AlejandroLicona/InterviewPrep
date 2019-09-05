@@ -1,0 +1,10 @@
+public DoublyLinkedNode insertAtHead(DoublyLinkedNode head, int data) {
+    DoublyLinkedNode newNode = new DoublyLinkedNode(data);
+    if(head == null){
+        return newNode;
+    } else {
+        head.prev = newNode;
+        newNode.next = head;
+    }
+    return newNode;
+}
